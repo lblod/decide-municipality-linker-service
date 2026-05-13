@@ -1,0 +1,28 @@
+{
+  "name": "municipality-linker-service",
+  "version": "0.9.8",
+  "type": "module",
+  "description": "Service to link things to municipality in case the link isn't clear from a single path",
+  "main": "app.js",
+  "author": "redpencil.io",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.10",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "mu-types": "git+https://github.com/rahien/mu-types.git",
+    "prettier": "^3.0.0"
+  },
+  "scripts": {
+    "lint:js": "eslint . --cache --ext .ts",
+    "lint:js:fix": "eslint . --cache --ext .ts --fix",
+    "release": "release-it",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@lblod/mu-auth-sudo": "^1.1.0",
+    "body-parser": "^1.19.0",
+    "uuid": "^8.3.1"
+  }
+}
