@@ -118,7 +118,7 @@ async function getBatchOfDecisions() {
 }
 
 linkUnlinkedDecisions().catch((e) => {
-  console.log(`Failed to link unlinked decisions at startup: ${e}`);
+  throw new Error(`Failed to link unlinked decisions at startup: ${e}`);
 });
 
 app.use(errorHandler);
