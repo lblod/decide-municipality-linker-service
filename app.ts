@@ -33,18 +33,24 @@ async function linkUnlinkedDecisions() {
   const myOwnRunning = new Date();
   running = myOwnRunning;
 
-  let count = await countLinkableDecisionsLeft();
-  while (count > 0) {
-    const batch = await getBatchOfDecisions();
-    await linkBatchOfDecisions(batch);
-    count = await countLinkableDecisionsLeft();
-  }
+  await unsafeLinkUnlinkedDecisions().catch((e) => {
+    console.log(`Failed to link unlinked decisions: ${e}`);
+  });
 
   await new Promise((resolve) => setTimeout(resolve, TIMEOUT));
   if (running != myOwnRunning) {
     await linkUnlinkedDecisions();
   } else {
     running = null;
+  }
+}
+
+async function unsafeLinkUnlinkedDecisions() {
+  let count = await countLinkableDecisionsLeft();
+  while (count > 0) {
+    const batch = await getBatchOfDecisions();
+    await linkBatchOfDecisions(batch);
+    count = await countLinkableDecisionsLeft();
   }
 }
 
