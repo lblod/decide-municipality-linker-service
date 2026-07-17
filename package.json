@@ -1,6 +1,6 @@
 {
   "name": "municipality-linker-service",
-  "version": "0.9.8",
+  "version": "0.0.2",
   "type": "module",
   "description": "Service to link things to municipality in case the link isn't clear from a single path",
   "main": "app.js",
